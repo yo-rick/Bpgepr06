@@ -17,6 +17,7 @@ def main():
     print("Getal 2 dubbel =", uitkomst2)
     getalkeer = keer(vraag1, vraag2)
     print("het getaal keer het andere getal =", getalkeer)
+    print("The end")
 
 
 main()
