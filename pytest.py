@@ -7,6 +7,9 @@ def keer(getal1, getal2):
     keer1 = getal1 * getal2
     return keer1
 
+def delen(getal1, getal2):
+    deling = getal1 / getal2
+    return deling
 
 def main():
     print("Dit programma doet iets met getallen.")
@@ -16,6 +19,8 @@ def main():
     print('getal 1', uitkomst1)
     print("Getal 2 dubbel =", uitkomst2)
     getalkeer = keer(vraag1, vraag2)
+    deel_getal = delen(vraag1, vraag2)
+    print("het deelgetal =", deel_getal)
     print("het getaal keer het andere getal =", getalkeer)
     print("tralaladiela")
 
