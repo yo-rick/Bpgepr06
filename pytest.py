@@ -30,6 +30,7 @@ def main():
     print("tralaladiela")
     kwadraad1, kwadraad2 = kwadraad(vraag1, vraag2)
     print("Kwadraad getal1 =", kwadraad1, "\nKwadraad getal2 =", kwadraad2)
+    print("haha")
 
 
 main()
