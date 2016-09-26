@@ -1,3 +1,8 @@
+def kwadraad(getal1, getal2):
+    kwadraad1 = getal1 * getal1
+    kwadraad2 = getal2 * getal2
+    return kwadraad1, kwadraad2
+
 def verdubbel(getal1, getal2):
     dubbel1 = getal1 * 2
     dubbel2 = getal2 * 2
@@ -23,6 +28,8 @@ def main():
     print("het deelgetal =", deel_getal)
     print("het getaal keer het andere getal =", getalkeer)
     print("tralaladiela")
+    kwadraad1, kwadraad2 = kwadraad(vraag1, vraag2)
+    print("Kwadraad getal1 =", kwadraad1, "\nKwadraad getal2 =", kwadraad2)
 
 
 main()
