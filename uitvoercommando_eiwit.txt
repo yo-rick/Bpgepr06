@@ -1,0 +1,9 @@
+cat rna.fa | tr "\n" "!" | sed 's/!>/\n>/g' | egrep -f gencodes.txt | sed 's/]!/]\n/g' | sed 's/!/\n/g' > gen_naam_met_sequenties.txt
+wget "ftp://ftp.ncbi.nlm.nih.gov/genomes/Ornithorhynchus_anatinus/protein/protein.fa.gz" -O protein.fa.gz
+gunzip protein.fa.gz
+formatdb -i protein.fa -pT
+blastall -i gen_naam_met_sequenties.txt -d protein.fa -p blastx -m8 -v 1 -b 1 > tab_eiwit_codes.txt
+cat tab_eiwit_codes.txt | awk '{print $2}' | tr -d "gi" | tr -d "ref" | cut -c 13-28 | tr -d "|" > eiwit_codes.txt
+cat protein.fa | egrep -f eiwit_codes.txt > eiwit_codes_namen.txt
+cat eiwit_codes_namen.txt| awk '{if(substr($0,18,1)=="f"){print substr($0,19,133)}else{print substr($0,18,134)}}' | sed 's/|//g'|sed 's/ PREDICTED://' | sed 's/Ornithorhynchus anatinus//' |tr -d "[]"| sed 's/, mitochondrial//' | sed 's/, partial//' > eiwit_code_met_naam.txt
+

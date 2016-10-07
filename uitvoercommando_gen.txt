@@ -1,0 +1,7 @@
+wget "ftp://ftp.ncbi.nlm.nih.gov/genomes/Ornithorhynchus_anatinus/RNA/rna.fa.gz" -O rna.fa.gz
+gunzip rna.fa.gz
+formatdb -i rna.fa -pF
+blastall -i sequenties_groep_06 -d rna.fa -p blastn -m8 -v 1 -b 1 -o blast_hits.txt
+cat blast_hits.txt | awk '{print($2)}' | sort | uniq | rev | cut -c2-15 | rev > gencodes.txt
+cat rna.fa | egrep -f gencodes.txt | awk '{if(substr($0,18,1)=="f"){print substr($0,19,133)}else{print substr($0,18,134)}}' | sed 's/|//'|sed 's/| PREDICTED:Ornithorhynchus anatinus//' | sed 's/, mRNA//g' | sed 's/, partialmRNA//' > gencodes_met_naam.txt
+
